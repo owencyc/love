@@ -167,7 +167,7 @@
                 targetTmpDate.getUTCFullYear(),
                 targetTmpDate.getUTCMonth(),
                 targetTmpDate.getUTCDate(),
-                targetTmpDate.getUTCHours(),
+                targetTmpDate.getHours(),
                 targetTmpDate.getUTCMinutes(),
                 targetTmpDate.getUTCSeconds()
             );
