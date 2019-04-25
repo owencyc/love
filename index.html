@@ -195,7 +195,7 @@
 			</div>
 			<div class="row">
 				<div class="col-md-12 col-md-offset-0">
-					<ul class="timeline animate-box">
+					<ul id="moment" class="timeline animate-box">
 						<li class="animate-box">
 							<div class="timeline-badge" style="background-image:url(images/couple-1.jpg);"></div>
 							<div class="timeline-panel">
@@ -483,7 +483,41 @@
         month: d.getMonth() + 1,
         day: d.getDate(),
         enableUtc: false
-    });
+		});
+
+		//get data
+			fetch('http://221.226.187.245:8888/wechatapi/api/test')
+				.then(response => {
+					if (response.ok) {
+						return response.json()
+					} else {
+						return Promise.reject({
+							status: response.status,
+							statusText: response.statusText
+						})
+					}
+				})
+				.catch(error => {
+					if (error.status === 404) {
+						// do something about 404
+					}
+				}).then(res=>{
+					console.log(res);
+					var item=`<li class="animate-box fadeInUp animated-fast">
+							<div class="timeline-badge" style="background-image:url(images/couple-1.jpg);"></div>
+							<div class="timeline-panel">
+								<div class="timeline-heading">
+									<h3 class="timeline-title">First We Meet</h3>
+									<span class="date">April 22, 2019</span>
+								</div>
+								<div class="timeline-body">
+									<p>test</p>
+								</div>
+							</div>
+						</li>`
+					$('#moment').append(item);
+				})
+		
 </script>
 
 	</body>
